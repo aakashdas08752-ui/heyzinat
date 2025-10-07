@@ -4,103 +4,191 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Zinat 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:wght@600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
-  font-family:'Playfair Display',serif;
-  color:#333;
+:root {
+  --primary-start: #ece6f1;
+  --primary-end: #d6ede8;
+  --glass-bg: #fff8ffc9;
+  --title-color: #5b339e;
+  --sender-gradient: linear-gradient(90deg,#7b66ff 30%,#bdabc7 70%);
+}
+body {
+  min-height:100vh;
+  margin:0;
+  font-family:'Quicksand', 'Playfair Display', serif;
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end) 100%);
+  background-size: 220% 220%;
+  animation: gradientBG 26s ease-in-out infinite;
+  color:#343554;
   line-height:1.7;
-  overflow-x:hidden;
   text-align:center;
-  animation:fadeIn 2s ease;
 }
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-h1{
+@keyframes gradientBG {
+  0%{background-position:0% 51%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 51%;}
+}
+.header { text-align:center; margin-top:46px; }
+h1 {
   font-family:'Great Vibes',cursive;
-  font-size:3em;
-  color:#d63384;
-  margin:25px 0 5px;
+  font-size:2.7em;
+  color:var(--title-color);
+  margin-bottom:14px;
+  letter-spacing:2px;
+  font-weight:700;
+  text-shadow:0 2px 27px #cfc3e8, 0 1px 11px #b7a6e9;
 }
-h2{color:#444;margin-bottom:10px;font-size:1.2em;}
-.message{
-  background:rgba(255,255,255,0.85);
-  border-radius:20px;
-  padding:25px;
-  max-width:700px;
-  margin:30px auto;
-  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+.sender{
+  font-family:'Josefin Sans',sans-serif;
+  font-size: 1.15em;
+  font-weight:700;
+  background:var(--sender-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:10px;
+  letter-spacing:2px;
+  display:inline-block;
+}
+.floral-divider{
+  font-family:'Great Vibes',cursive;
+  font-size:1.03em;
+  color:#a3a0ad;
+  letter-spacing: 2.3px;
+  margin:13px auto 11px auto;
+  opacity:0.45;
+}
+.message {
+  font-family:'Quicksand',sans-serif;
+  background:var(--glass-bg);
+  border-radius:30px;
+  padding:35px 25px 38px 25px;
+  max-width:680px;
+  margin:32px auto 0;
+  box-shadow: 0 6px 30px 4px #c3b8e626, 0 0 0 12px #d6ede833 inset;
   text-align:left;
-  font-size:1.05em;
-  animation:fadeUp 1.5s ease;
+  font-size:1.15em;
+  border:0.7px solid #dedae7b2;
+  backdrop-filter: blur(8px) brightness(1.04);
+  -webkit-backdrop-filter: blur(8px) brightness(1.04);
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
-footer{margin:40px 0;font-style:italic;color:#444;}
-.heart{
-  position:absolute;width:15px;height:15px;
-  background:rgba(255,0,100,0.7);transform:rotate(45deg);
-  animation:float 6s infinite ease-in;
+@media (max-width:700px) {
+  .message {padding:12px; max-width:97vw;}
+  h1 {font-size:2em;}
+  .header {margin-top:18px;}
 }
-.heart::before,.heart::after{
-  content:"";position:absolute;width:15px;height:15px;background:inherit;border-radius:50%;
+
+footer{
+  margin:34px 0 13px 0;
+  font-family:'Josefin Sans',sans-serif;
+  text-align:center;
+  font-style:italic;
+  color:#a8a3ad;
+  font-size:1.07em;
+  letter-spacing:0.7px;
 }
-.heart::before{top:-7px;left:0;}
-.heart::after{left:7px;top:0;}
+.flower{
+  position:absolute;
+  font-size:19px;
+  animation:float 11s linear infinite;
+  user-select:none;
+  pointer-events:none;
+  z-index:2;
+  opacity:0.31;
+}
 @keyframes float{
-  0%{transform:translateY(0) rotate(45deg);opacity:1;}
-  100%{transform:translateY(-700px) rotate(45deg);opacity:0;}
+  0%{transform:translateY(0) rotate(var(--initrot,0deg));opacity:0.33;}
+  100%{transform:translateY(-380px) rotate(calc(var(--initrot,0deg)+360deg));opacity:0;}
 }
-.music-btn{
-  position:fixed;bottom:15px;right:15px;
-  background:#d63384;color:#fff;border:none;
-  border-radius:50%;width:50px;height:50px;
-  font-size:1.4em;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,0.2);
+.music-toggle-btn {
+  position: fixed;
+  bottom: 26px;
+  right: 30px;
+  z-index: 199;
+  background: rgba(245,245,251,0.76);
+  color: #5b339e;
+  border: 1.3px solid #b9aac5;
+  outline: none;
+  padding: 14px 19px;
+  border-radius: 50%;
+  font-size: 2em;
+  font-family: 'Josefin Sans', cursive;
+  cursor: pointer;
+  box-shadow: 0 3px 16px 0 #c4c8e6, 0 1.5px 7px #d3dcdb42;
+  transition: background 0.17s, box-shadow 0.19s, border-color 0.15s, transform 0.09s;
+  will-change:transform,filter;
+  display:flex; align-items:center; justify-content:center;
 }
-.music-btn:active{transform:scale(0.95);}
+.music-toggle-btn:focus {outline:none;}
+.music-toggle-btn:hover {
+  background: #efe7f2;
+  box-shadow: 0 8px 22px 6px #cfc3e849, 0 1.5px 13px #d3dcdb57;
+  border-color: #8c7ba3;
+  transform:scale(1.06);
+}
+.music-toggle-btn.pulse {
+  animation: pulsebtn 1.1s infinite alternate;
+}
+@keyframes pulsebtn{
+  from { box-shadow:0 2px 22px #cdc3f733,0 1.5px 7px #dacffa77;}
+  to   { box-shadow:0 9px 24px 3px #b6abc747,0 1.5px 11px #d6ede842; }
+}
+.music-toggle-btn::after {
+  content:"";
+  display:block;
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  left:15%;top:22%; width:66%;height:56%;
+  background: radial-gradient(circle at 22% 36%,#fff7 10%,#fff0 80%);
+  opacity:0.42;
+  transition:opacity 0.10s;
+}
+.music-toggle-btn:hover::after {opacity:0.57;}
+.heart {
+  position: absolute;
+  bottom:16px; right:22px; font-size:1.19em;
+  opacity: 0.19;
+  pointer-events: none;
+  user-select:none;
+  z-index:2;
+}
+
 </style>
 </head>
 <body>
-<h1>Happy Birthday, Zinat 🎂</h1>
-<h2>From Akash 💌</h2>
-
+<div class="header">
+  <h1>Happy Birthday, Zinat 🎂</h1>
+  <div class="sender">From Akash 🌸</div>
+  <div class="floral-divider">✿ ❀ ❁ ✾ ❉ ❋ ✿ ❀ ❁</div>
+</div>
 <div class="message">
 <p>Hey Zinat, it’s me, Akash.<br>
 It’s your birthday, so before I say anything else, I just want to wish you a very Happy Birthday, Zinat.</p>
-
 <p>I don’t know if you still remember me or not, although I’m probably not an important person to be remembered.
 I can’t understand why I’m still unable to move on from you. Maybe I never even tried…</p>
-
 <p>I’m not messaging you to say that I miss you — although I do — but that’s not the main reason I wanted to reach out.
 There are a couple of things I’ve wanted to say to you but never did. Believe me, I have to say them before it’s too late.</p>
-
 <p>I feel like I’ve been carrying something with me for so long, and now it’s getting harder to bear.
 Sometimes people have to let go of their most precious things just to be normal again, and maybe it’s my time now.</p>
-
 <p>Zinat, maybe you hate me, or maybe you’re thinking, “This person is back in my chat list again.”
 Maybe I’m spoiling your mood on this special day, but I have to be real with you.</p>
-
 <p>It’s been three years since we last talked, and I’ve had so many things to say but never had the courage to contact you.</p>
-
 <p>I’m extremely sorry for what happened three years ago on that picnic.
 I feel guilty for it. Believe me or not, I was unaware of what they had planned; I was not a part of it.
 I cried later that night when I found out they had confessed my feelings to you.
 I knew it was over and that our friendship wouldn’t last long, so I cried very hard.
 I didn’t cry because you wouldn’t be mine.
 I cried because I knew I would lose you as a very important part of me.</p>
-
 <p>I never wanted you desperately — I just needed you for the rest of my life as a friend, a mentor, or anything.
 I just wanted to stay by your side.</p>
-
 <p>You know, I left Kolkata because I didn’t want to make you uncomfortable.
 I know what type of person you are, and I knew you would feel uncomfortable after seeing me, so I left quietly.</p>
-
 <p>I’ve never stuck to something for more than a year, but it’s been three years now, and you still live in my head rent-free. Pay the rent 😹</p>
-
 <p>Jokes apart, it’s getting very hard for me to live like this.
 I’m not blaming you; it’s totally on me.
 The only thing is that I had too many things to say, but the time never came — and that’s why those things are killing me.</p>
-
 <p>1. I want to say sorry.<br>
 2. I want to say thank you.<br>
 3. Sorry for what I did to you. I understand the situation and I feel truly sorry, but believe me, I had no intentions of hurting you.<br>
@@ -111,44 +199,76 @@ I have an aim now just because of you. You’re my inspiration. Thank you for gi
 5. I had a couple of things to give you, but the time never came.
 So I handed those things over to Tanisha. Please collect them from her. After that, it’s up to you to decide what you’re going to do with them.<br>
 6. You won’t believe me, but if you do, I want to say that I never confessed about you to them. The situation forced me to confess, and I want you to understand that I wasn’t in my senses that day—I had been drinking with Rajib and Apon, and I was so drunk that I lost control of my emotions. If you remember, we went to Bhyabla Mela that day, and you were wearing a red dress—you looked absolutely gorgeous. You were on my mind while I was drinking, and suddenly they started talking about you, asking me about you, teasing me by calling your name. In that moment, I broke down in tears and told them everything about you—my feelings for you.</p>
-
 <p>After telling them, I fell asleep, and they planned everything on their own. When I woke up in the morning, I was filled with regret for confessing and completely unaware of what they had planned. I knew this confession would end everything—and it did. Believe me, I never intended to tell anyone about you, but the situation made me.<br>
 7. Zinat, believe me, I never thought badly of you. I always cared for you, no matter what — and I still do.
 Maybe after saying these things to you, I’ll get some relief.</p>
-
 <p>I’m extremely sorry if I’ve ruined your day.<br>
 <i>Jodi paris, amake khoma kore dis — amar jonno je poristhitir modhhe diye toke jete hoyeche.</i></p>
-
 <p><strong>Happy Birthday..🎂</strong></p>
+<span class="heart">❤</span>
 </div>
-
-<footer>— Akash</footer>
-
-<button class="music-btn" id="musicBtn">🎵</button>
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/02/06/audio_d57ed9e3a1.mp3?filename=soft-piano-140750.mp3" type="audio/mpeg">
-</audio>
-
+<footer>— Yeet</footer>
+<button class="music-toggle-btn" id="music-toggle" title="Toggle music" aria-label="Play or pause soothing music">🎵</button>
+<audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3"></audio>
 <script>
-const colors=['#ff4d6d','#ff758f','#d63384','#e83e8c'];
-function createHeart(){
-  const h=document.createElement('div');
-  h.className='heart';
-  h.style.left=Math.random()*100+'vw';
-  h.style.background=colors[Math.floor(Math.random()*colors.length)];
-  h.style.animationDuration=4+Math.random()*4+'s';
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
+const flowers = ['🌸','🌼','💮','🌺','🌻','🌷','🪻','🌿','🍃','🌹','🌱'];
+function createFlower(){
+  const f = document.createElement('div');
+  f.className = 'flower';
+  f.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+  f.style.left = Math.random() * 97 + 'vw';
+  f.style.fontSize = (14 + Math.random() * 16) + 'px';
+  f.style.setProperty('--initrot', Math.floor(Math.random()*360)+'deg');
+  f.style.animationDuration = (10 + Math.random() * 7) + 's';
+  document.body.appendChild(f);
+  setTimeout(() => f.remove(), 13000);
 }
-setInterval(createHeart,300);
+setInterval(createFlower, 1200);
 
-const music=document.getElementById('bgMusic');
-const btn=document.getElementById('musicBtn');
-let playing=false;
-btn.onclick=function(){
-  if(!playing){music.play();btn.textContent='⏸️';playing=true;}
-  else{music.pause();btn.textContent='🎵';playing=false;}
+const music = document.getElementById('bg-music');
+const toggleBtn = document.getElementById('music-toggle');
+toggleBtn.textContent = "🎵";
+let isPlaying = false;
+function audioFade(audio, from, to, duration = 550){
+  const steps = 16;
+  const step = (to-from)/steps;
+  let current = from, count = 0;
+  const fade = setInterval(()=>{
+    current += step;
+    audio.volume = Math.min(Math.max(current, 0), 1);
+    count++;
+    if(count>=steps){ audio.volume = to; clearInterval(fade);}
+  }, duration/steps);
+}
+toggleBtn.onclick = function() {
+  if(isPlaying) {
+    audioFade(music, music.volume, 0, 680);
+    setTimeout(()=>music.pause(), 670);
+  } else {
+    music.volume = 0.0;
+    music.loop = true;
+    music.play();
+  }
 };
+music.addEventListener("playing", ()=>{
+  isPlaying = true;
+  toggleBtn.textContent = "⏸️";
+  toggleBtn.classList.add("pulse");
+  audioFade(music, music.volume, 0.27, 620);
+});
+music.addEventListener("pause", ()=>{
+  isPlaying = false;
+  toggleBtn.textContent = "🎵";
+  toggleBtn.classList.remove("pulse");
+});
+music.addEventListener("ended", ()=>{
+  isPlaying = false;
+  toggleBtn.textContent = "🎵";
+  toggleBtn.classList.remove("pulse");
+});
+toggleBtn.textContent = music.paused ? "🎵" : "⏸️";
+if(!music.paused) toggleBtn.classList.add("pulse");
 </script>
 </body>
 </html>
+
